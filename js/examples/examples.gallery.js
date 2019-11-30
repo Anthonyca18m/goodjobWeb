@@ -1,6 +1,6 @@
 /*
 Name: 			Elements - Image Gallery - Examples
-Written by: 	Okler Themes - (http://www.okler.net)
+Written by: 	Okler Themes - (http://www.anthostudio.ga)
 Theme Version:	7.6.0
 */
 (function($) {

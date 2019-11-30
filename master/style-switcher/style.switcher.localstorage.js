@@ -1,6 +1,6 @@
 /*
 Name: 			Style Switcher Initializer
-Written by: 	Okler Themes - (http://www.okler.net)
+Written by: 	Okler Themes - (http://www.anthostudio.ga)
 Version: 		2.0
 */
 

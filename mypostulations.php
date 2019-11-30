@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Actividades | GOODJOB</title>
+    <title>Mis postulaciones | GOODJOB</title>
 
     <meta name="keywords" content=" ">
     <meta name="description" content="">
@@ -146,7 +146,7 @@
 
                                                 </li>
                                                 <li class="dropdown dropdown-mega"> <a
-                                                        class="dropdown-item dropdown-toggle active" href="actividades">
+                                                        class="dropdown-item dropdown-toggle" href="actividades">
                                                         Actividades </a>
 
                                                 </li>
@@ -197,7 +197,7 @@
                         <div class="col-sm-3">
                             <a href="profile">Mi perfil</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-3"style="background:#fafafa;">
                             <a href="mypostulations">Mis postulaciones</a>
                         </div>
                         <div class="col-sm-3">
@@ -210,45 +210,15 @@
                 </div>
                 <div class="container shadow p-3 mb-5 bg-white rounded">
                     <div class="row pb-1 pt-2">
-                        <div class="col-md-3">
-
-
-
-                            <aside class="sidebar pb-4">
-                                <h5 class="font-weight-bold pt-4 mb-2">Categorias</h5>
-                                <div class="mb-3 pb-1">
-                                    <a href="#"><span style="background:#DBFFD4;"
-                                            class="badge  badge-sm badge-pill text-uppercase px-2 py-1 mr-1">URBANIZACIONES</span>
-                                    </a>
-                                    <a href="#">
-                                        <span style="background:#DBFFD4;"
-                                            class="badge  badge-sm badge-pill text-uppercase px-2 py-1 mr-1">PLAYAS</span>
-                                    </a>
-                                    <a href="#"><span style="background:#DBFFD4;"
-                                            class="badge  badge-sm badge-pill text-uppercase px-2 py-1 mr-1">CALLES</span>
-                                    </a>
-                                    <a href="#"><span style="background:#DBFFD4;"
-                                            class="badge  badge-sm badge-pill text-uppercase px-2 py-1 mr-1">PISTAS</span>
-                                    </a>
-                                    <a href="#"><span style="background:#DBFFD4;"
-                                            class="badge  badge-sm badge-pill text-uppercase px-2 py-1 mr-1">PUBLICIDAD</span>
-                                    </a>
-                                </div> <a href="" target="_blank" class="my-4 pt-3 d-block"> <img alt=""
-                                        class="img-fluid" src="img\blog\blog-ad-1-medium.jpg"> </a>
-
-                            </aside>
-
-
-
-                        </div>
-                        <div class="col-md-9">
+                        
+                        <div class="col-md-12">
                             <div class="row pb-1">
                                 <div class="col-lg-12">
                                     <article
                                         class="border-bottom thumb-info thumb-info-side-image thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
                                         <div class="row align-items-center pb-1">
                                             <div class="col-sm-4">
-                                                <a href="#" data-href="ajax/actividad.php" data-ajax-on-page="">
+                                                <a href="#" data-href="ajax/actividadpostulada.php" data-ajax-on-page="">
                                                     <img src="img\blog\default\blog-47.jpg"
                                                         class="img-fluid border-radius-0" alt="">
                                                 </a>

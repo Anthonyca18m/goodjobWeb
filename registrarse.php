@@ -9,9 +9,9 @@
 
     <title>Registrarte | GOODJOB</title>
 
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Porto - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
+    <meta name="keywords" content=" ">
+    <meta name="description" content="">
+    <meta name="author" content="anthostudio.ga">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="goodjob/logo.png" type="image/x-icon">
@@ -74,10 +74,10 @@
                                     <nav class="header-nav-top">
                                         <ul class="nav nav-pills">
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block"> <a
-                                                    class="nav-link pl-0" href=""><i class="fas fa-angle-right"></i>
+                                                    class="nav-link pl-0" href="nosotros"><i class="fas fa-angle-right"></i>
                                                     Nosotros</a> </li>
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block"> <a
-                                                    class="nav-link" href=""><i class="fas fa-angle-right"></i>
+                                                    class="nav-link" href="nosotros"><i class="fas fa-angle-right"></i>
                                                     Contactános</a> </li>
                                             <li
                                                 class="nav-item dropdown nav-item-left-border d-none d-sm-block nav-item-left-border-remove nav-item-left-border-md-show">
@@ -123,8 +123,8 @@
                         <div class="header-column">
                             <div class="header-row">
                                 <div class="header-logo">
-                                    <a href="">
-                                        <img alt="Porto" width="150" height="90" data-sticky-width="82"
+                                    <a href="index">
+                                        <img alt="" width="150" height="90" data-sticky-width="82"
                                             data-sticky-height="40" src="goodjob/logo_grande.png">
                                     </a>
                                 </div>
@@ -139,16 +139,16 @@
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
-                                                        href=""> INICIO </a>
+                                                        href="index"> INICIO </a>
 
                                                 </li>
                                                 <li class="dropdown dropdown-mega"> <a
-                                                        class="dropdown-item dropdown-toggle" href="principal.php">
+                                                        class="dropdown-item dropdown-toggle" href="actividades">
                                                         Actividades </a>
 
                                                 </li>
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
-                                                        href="testimonios.html"> Testimonios </a>
+                                                        href="testimonios"> Testimonios </a>
 
                                                 </li>
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle" href="#">
@@ -156,7 +156,7 @@
 
                                                 </li>
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle active"
-                                                        href="registrarse.php">
+                                                        href="registrarse">
                                                         Registrarse </a>
 
                                                 </li>
@@ -388,11 +388,11 @@
                                 class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
                                 <nav id="sub-menu">
                                     <ul>
-                                        <li><i class="fas fa-angle-right"></i><a href=""
+                                        <li><i class="fas fa-angle-right"></i><a href="faqs"
                                                 class="ml-1 text-decoration-none"> FAQ's</a></li>
-                                        <li><i class="fas fa-angle-right"></i><a href=""
+                                        <li><i class="fas fa-angle-right"></i><a href="ubicanos"
                                                 class="ml-1 text-decoration-none"> Ubicanos</a></li>
-                                        <li><i class="fas fa-angle-right"></i><a href=""
+                                        <li><i class="fas fa-angle-right"></i><a href="contactanos"
                                                 class="ml-1 text-decoration-none"> Contáctanos</a></li>
                                     </ul>
                                 </nav>

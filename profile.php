@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="vendor\owl.carousel\assets\owl.carousel.min.css">
     <link rel="stylesheet" href="vendor\owl.carousel\assets\owl.theme.default.min.css">
     <link rel="stylesheet" href="vendor\magnific-popup\magnific-popup.min.css">
-
+    <link rel="stylesheet" href="vendor\bootstrap-star-rating\css\star-rating.min.css">
+    <link rel="stylesheet" href="vendor\bootstrap-star-rating\themes\krajee-fas\theme.min.css">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="css\theme.css">
     <link rel="stylesheet" href="css\theme-elements.css">
@@ -240,6 +241,21 @@
                                             <li class="nav-item"><a class="nav-link" href="#">Cambiar Contraseña</a>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesión</a></li>
+
+                                            <div class="row align-items-center mt-5 text-center">
+                                                <div class="col-sm-12">
+                                                    <div class="pr-3 pr-sm-5 pb-3 pb-sm-0 border-right-light">
+                                                        <h4 class="mb-2">Reputación</h4>
+                                                        <div class="d-block pb-2">
+                                                            <input type="text" class="rating-invisible" value="4"
+                                                                title="" data-plugin-star-rating=""
+                                                                data-plugin-options="{'displayOnly': true, 'color': '#1AAB00', 'size':'sm'}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
                                         </ul>
                                     </aside>
 
@@ -264,18 +280,18 @@
                                                 <label
                                                     class=" font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Nombres</label>
-                                                <input class="form-control" required="" type="text">
+                                                <input class="form-control" required="" id="profile_nombres" name="profile_nombres" type="text">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class=" font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                                    Apellido Paterno</label><input class="form-control" required=""
+                                                    Apellido Paterno</label><input id="profile_paterno" name="profile_paterno" class="form-control" required=""
                                                     type="text">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                                    Apellido Paterno</label><input class="form-control" required=""
+                                                    Apellido Paterno</label><input id="profile_materno" name="profile_materno" class="form-control" required=""
                                                     type="text">
                                             </div>
                                         </div>
@@ -283,31 +299,31 @@
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
-                                                <input class="form-control" required="" type="email">
+                                                <input class="form-control" id="profile_email" name="profile_email" required="" type="email">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Celular</label>
-                                                <input class="form-control" required="" type="text">
+                                                <input class="form-control" id="profile_celular" name="profile_celular" required="" type="text">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     DNI</label>
-                                                <input class="form-control" required="" type="text">
+                                                <input class="form-control" id="profile_dni" name="profile_dni" required="" type="text">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Fecha de Nacimiento</label>
-                                                <input class="form-control" required="" type="date">
+                                                <input class="form-control" id="profile_fechnac" name="profile_fechnac" required="" type="date">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Género</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_genero" id="profile_genero" class="form-control">
                                                     <option value=""> SELECCIONE GENERO</option>
                                                     <option value="1"> HOMBRE</option>
                                                     <option value="2"> MUJER</option>
@@ -318,7 +334,7 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Estado Civil</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_estadocivil" id="profile_estadocivil" class="form-control">
                                                     <option value=""> SELECCIONE ESTADO CIVIL</option>
                                                     <option value="1"> CASADO(A)</option>
                                                     <option value="2"> SOLTERO(A)</option>
@@ -338,13 +354,13 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Dirección</label>
-                                                <input class="form-control" required="" type="text">
+                                                <input class="form-control" id="profile_direccion" name="profile_direccion" required="" type="text">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Distrito</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_distrito" id="profile_distrito" class="form-control">
                                                     <option value=""> SELECCIONE DISTRITO</option>
                                                 </select>
                                             </div>
@@ -352,7 +368,7 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Provincia</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_provincia" id="profile_provincia" class="form-control">
                                                     <option value=""> SELECCIONE PROVINCIA</option>
                                                 </select>
                                             </div>
@@ -360,7 +376,7 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Departamento</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_departamento" id="profile_departamento" class="form-control">
                                                     <option value=""> SELECCIONE DEPARTAMENTO</option>
                                                 </select>
                                             </div>
@@ -368,7 +384,7 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Pais</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="profile_pais" id="profile_pais" class="form-control">
                                                     <option value=""> SELECCIONE PAIS</option>
                                                 </select>
                                             </div>
@@ -382,13 +398,13 @@
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Link Facebook</label>
-                                                <input class="form-control" required="" type="url">
+                                                <input class="form-control" id="profile_linkfacebook" name="profile_linkfacebook" required="" type="url">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
                                                     class="font-weight-bold text-dark col-form-label form-control-label text-2 required">
                                                     Link linkedin</label>
-                                                <input class="form-control" required="" type="url">
+                                                <input class="form-control" id="profile_linklinkedin" name="profile_linklinkedin" required="" type="url">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label
@@ -397,7 +413,7 @@
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
-                                                            id="inputGroupFile01">
+                                                            id="profile_cv" name="profile_cv">
                                                         <label class="custom-file-label" for="inputGroupFile01">
                                                             archivo</label>
                                                     </div>
@@ -407,15 +423,20 @@
                                         <div class="row">
                                             <div class="form-group col-sm-12">
 
-                                                <button type="submit"
+                                                <button type="submit" id="profile_btnGuardar"
                                                     class="mb-1 mt-1 mr-1 btn btn-outline btn-success float-right"
                                                     data-loading-text="Loading...">
                                                     <i class="far fa-save"></i>
                                                 </button>
-                                                <button type="button"
+                                                <button type="button" id="profile_btnEditar"
                                                     class="mb-1 mt-1 mr-1 btn btn-outline btn-info float-right"
                                                     data-loading-text="Loading...">
                                                     <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" id="profile_btnCancelar"
+                                                    class="mb-1 mt-1 mr-1 btn btn-outline btn-default float-right"
+                                                    data-loading-text="Loading...">
+                                                    <i class="far fa-window-close"></i>
                                                 </button>
 
                                             </div>
@@ -485,7 +506,8 @@
         <script src="vendor\magnific-popup\jquery.magnific-popup.min.js"></script>
         <script src="vendor\vide\jquery.vide.min.js"></script>
         <script src="vendor\vivus\vivus.min.js"></script>
-
+        <script src="vendor\bootstrap-star-rating\js\star-rating.min.js"></script>
+        <script src="vendor\bootstrap-star-rating\themes\krajee-fas\theme.min.js"></script>
         <!-- Theme Base, Components and Settings -->
         <script src="js\theme.js"></script>
 
@@ -504,3 +526,83 @@
 </body>
 
 </html>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    //desabilitar todos los inputs del profile
+    document.getElementById("profile_nombres").disabled = true;
+    document.getElementById("profile_paterno").disabled = true;
+    document.getElementById("profile_materno").disabled = true;
+    document.getElementById("profile_email").disabled = true;
+    document.getElementById("profile_celular").disabled = true;
+    document.getElementById("profile_dni").disabled = true;
+    document.getElementById("profile_fechnac").disabled = true;
+    document.getElementById("profile_genero").disabled = true;
+    document.getElementById("profile_estadocivil").disabled = true;
+    document.getElementById("profile_direccion").disabled = true;
+    document.getElementById("profile_distrito").disabled = true;
+    document.getElementById("profile_provincia").disabled = true;
+    document.getElementById("profile_departamento").disabled = true;
+    document.getElementById("profile_pais").disabled = true;
+    document.getElementById("profile_linkfacebook").disabled = true;
+    document.getElementById("profile_linklinkedin").disabled = true;
+    document.getElementById("profile_cv").disabled = true;
+
+    document.getElementById("profile_btnGuardar").disabled = true;
+    document.getElementById("profile_btnCancelar").hidden = true;
+
+    $("#profile_btnEditar").click(function(e){
+    
+    document.getElementById("profile_nombres").disabled = false;
+    document.getElementById("profile_paterno").disabled = false;
+    document.getElementById("profile_materno").disabled = false;
+    document.getElementById("profile_email").disabled = false;
+    document.getElementById("profile_celular").disabled = false;
+    document.getElementById("profile_dni").disabled = false;
+    document.getElementById("profile_fechnac").disabled = false;
+    document.getElementById("profile_genero").disabled = false;
+    document.getElementById("profile_estadocivil").disabled = false;
+    document.getElementById("profile_direccion").disabled = false;
+    document.getElementById("profile_distrito").disabled = false;
+    document.getElementById("profile_provincia").disabled = false;
+    document.getElementById("profile_departamento").disabled = false;
+    document.getElementById("profile_pais").disabled = false;
+    document.getElementById("profile_linkfacebook").disabled = false;
+    document.getElementById("profile_linklinkedin").disabled = false;
+    document.getElementById("profile_cv").disabled = false;
+    document.getElementById("profile_btnGuardar").disabled = false;
+    document.getElementById("profile_btnEditar").disabled = true;
+    
+    document.getElementById("profile_btnCancelar").hidden = false;
+})
+
+$("#profile_btnCancelar").click(function(e){
+    
+    document.getElementById("profile_nombres").disabled = true;
+    document.getElementById("profile_paterno").disabled = true;
+    document.getElementById("profile_materno").disabled = true;
+    document.getElementById("profile_email").disabled = true;
+    document.getElementById("profile_celular").disabled = true;
+    document.getElementById("profile_dni").disabled = true;
+    document.getElementById("profile_fechnac").disabled = true;
+    document.getElementById("profile_genero").disabled = true;
+    document.getElementById("profile_estadocivil").disabled = true;
+    document.getElementById("profile_direccion").disabled = true;
+    document.getElementById("profile_distrito").disabled = true;
+    document.getElementById("profile_provincia").disabled = true;
+    document.getElementById("profile_departamento").disabled = true;
+    document.getElementById("profile_pais").disabled = true;
+    document.getElementById("profile_linkfacebook").disabled = true;
+    document.getElementById("profile_linklinkedin").disabled = true;
+    document.getElementById("profile_cv").disabled = true;
+    document.getElementById("profile_btnGuardar").disabled = true;
+    document.getElementById("profile_btnEditar").disabled = false;
+    
+    document.getElementById("profile_btnCancelar").hidden = true;
+})
+
+
+});
+
+</script>

@@ -62,9 +62,16 @@
                 <strong> 4 Personas</strong>
             </p>
         </div>
+        <div class="col-sm-3">
+
+            <h5>Día a realizarse: </h5>
+            <p>
+                <strong> 17/12/2019</strong>
+            </p>
+        </div>
     </div>
 
-    <a href="#" class="btn btn-success btn-sm">Postular</a>
+    <a href="#" class="btn btn-success btn-sm">Postular actividad</a>
 
 
 </div>

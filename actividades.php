@@ -1,3 +1,17 @@
+<?php
+
+$hidden = "";
+$mostrar= "";
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    $hidden =  "";
+    $mostrar= "style='display:none;'";
+} else {
+    $hidden =  "style='display:none;'";
+    $mostrar = "";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -142,7 +156,7 @@
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
                                                         href="index">
-                                                        INICIO </a>
+                                                        INICIO</a>
 
                                                 </li>
                                                 <li class="dropdown dropdown-mega"> <a
@@ -160,10 +174,15 @@
 
                                                 </li>
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
-                                                        href="registrarse">
+                                                        href="registrarse" <?php echo $hidden; ?>>
                                                         Registrarse </a>
 
                                                 </li>
+                                                <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
+                                                        href="profile" <?php echo $mostrar; ?>>
+                                                        Mi Perfil </a>
+                                                </li>
+                                                
                                             </ul>
                                         </nav>
                                     </div>
@@ -172,7 +191,7 @@
                                         <i class="fas fa-bars"></i>
                                     </button>
                                 </div>
-                                <div class="header-nav-features 
+                                <div <?php echo $hidden; ?> class="header-nav-features 
 								header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
                                     <div class="header-nav-feature header-nav-features-search d-inline-flex">
                                         <a href="#" data-toggle="modal" data-target="#FormLogin"
@@ -194,14 +213,14 @@
             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                 <div class="container shadow p-3 mb-2 bg-white rounded">
                     <div class="row text-center">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" <?php echo $mostrar; ?> >
                             <a href="profile">Mi perfil</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" <?php echo $mostrar; ?> >
                             <a href="mypostulations">Mis postulaciones</a>
                         </div>
                         <div class="col-sm-3">
-                            <a href="myparticiones">Mis participaciones</a>
+                            <a href="myparticiones" <?php echo $mostrar; ?> >Mis participaciones</a>
                         </div>
                         <div class="col-sm-3">
                             <a href="">Descargar la APP</a>
@@ -339,7 +358,7 @@
     </div>
 
 
-    <?php include_once("modals/modal_FormLogin.html"); ?>
+    <?php include_once("modals/modal_FormLogin.php"); ?>
 
 
     <!-- Vendor -->

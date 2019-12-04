@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Registrarte | GOODJOB</title>
+    <title>Mi Perfil | GOODJOB</title>
 
     <meta name="keywords" content=" ">
     <meta name="description" content="">
@@ -484,7 +484,7 @@
         </div>
 
 
-        <?php include_once("modals/modal_FormLogin.html"); ?>
+        <?php include_once("modals/modal_FormLogin.php"); ?>
 
 
         <!-- Vendor -->

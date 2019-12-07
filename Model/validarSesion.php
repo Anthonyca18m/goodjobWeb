@@ -1,13 +1,14 @@
 <?php  
     require_once("db.php");
 
-		$sql = "SELECT * FROM usuario WHERE Ucorreo = :usuario AND Upass = :clave";
+		$sql = "SELECT * FROM usuario WHERE Ucorreo = :usuario AND Upass = sha1(:clave)";
 
 		$resultado = $conPDO->prepare($sql);
 
 		$usuario = htmlentities(addslashes($_POST['LoginUser']));
 
 		$clave = htmlentities(addslashes($_POST['LoginPass']));
+		
 
 		$resultado->bindValue(":usuario", $usuario);
 
@@ -29,5 +30,16 @@
             }
 			//echo "El agente de usuario de tu navegador es: {$_SERVER['HTTP_USER_AGENT']}"."<br>";
 		}else{
-            header("Location:index");
+			$ruc = htmlentities(addslashes($_POST['LoginUser']));
+			$pass = htmlentities(addslashes($_POST['LoginPass']));
+
+			$sql = "SELECT * from empresa e 
+			INNER JOIN distrito d ON e.idDistrito = d.idDistrito WHERE 
+			Eruc = ':usuario' AND e.password = sha1(':clave')";
+
+			$resultado->bindValue(":usuario", $usuario);
+
+			$resultado->bindValue(":clave", $clave);
+
+			$resultado->execute();
         }

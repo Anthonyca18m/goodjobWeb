@@ -10,14 +10,15 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label class="font-weight-bold text-dark text-2 required">Email</label>
-                                    <input id="LoginUser" name="LoginUser" type="email"  required class=" form-control ">
+                                    <input id="LoginUser" name="LoginUser" type="email" required class=" form-control ">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    
+
                                     <label class="font-weight-bold text-dark text-2 required">Contraseña</label>
-                                    <input id="LoginPass" name="LoginPass" type="password"  class="form-control"  required>
+                                    <input id="LoginPass" name="LoginPass" type="password" class="form-control"
+                                        required>
                                     <a class="float-right" href="#">¿Olvidaste tu contraseña?</a>
                                 </div>
                             </div>
@@ -29,7 +30,7 @@
                                 </div>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>

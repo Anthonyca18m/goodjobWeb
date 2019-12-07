@@ -25,10 +25,15 @@
             
             $result = $resultado->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $rs) {
-                $_SESSION['usuario'] = $rs["idUsuario"];
-                header("Location: ../actividades"); 
+				$_SESSION['usuario'] = $rs["idUsuario"];
+				if($rs["tipo_usuario"] == 1){
+					header("Location: ../actividades"); 
+				}elseif($rs["tipo_usuario"] == 2){
+					header("Location: ../panelAdmin");
+				}
+                
             }
-			//echo "El agente de usuario de tu navegador es: {$_SERVER['HTTP_USER_AGENT']}"."<br>";
+			
 		}else{
 			$ruc = htmlentities(addslashes($_POST['LoginUser']));
 			$pass = htmlentities(addslashes($_POST['LoginPass']));
@@ -42,4 +47,12 @@
 			$resultado->bindValue(":clave", $clave);
 
 			$resultado->execute();
+			header("Location: ../actividades"); 
+			session_start();
+            
+            $result = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $rs) {
+                $_SESSION['empresa'] = $rs["idUsuario"];
+                header("Location: ../actividades"); 
+            }
         }

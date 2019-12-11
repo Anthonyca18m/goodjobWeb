@@ -58,7 +58,6 @@
     <script src="js\views\view.home.js"></script>
     <script src="js\examples\examples.portfolio.js"></script>
     <!-- Theme Custom -->
-    <script src="js/custom.js"></script>
 
     <!-- Theme Initialization Files -->
     <script src="js\theme.init.js"></script>

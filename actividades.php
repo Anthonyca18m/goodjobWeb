@@ -1,5 +1,5 @@
 <?php
-
+    require_once("Model/db_mysqli.php");
 $hidden = "";
 $mostrar= "";
 session_start();
@@ -218,40 +218,101 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div class="col-md-9">
                             <div class="row pb-1">
+                            <?php 
+                            $sql = "SELECT *,
+                                            a.id AS idActividad,
+                                            e.EnombreComercial AS Publicante,
+                                            a.foto AS fotoActividad
+                                 FROM actividad a INNER JOIN empresa e 
+                                    ON a.empresa = e.idEmpresa WHERE a.estado = 1";
+                            $result = mysqli_query($con , $sql);
+                            while ($rs = mysqli_fetch_assoc($result)) {
+                                $fecha_creacion = $rs["fecha_creacion"];
+                                $divisor = explode("-", $fecha_creacion);
+                                $dia = $divisor[2];
+                                $mes = $divisor[1];
+                                $ano = $divisor[0];
+                                switch ($mes) {
+                                    case 1:
+                                        $fecha_creacion = $dia . " de Enero del " . $ano;
+                                        break;
+                                    case 2:
+                                        $fecha_creacion = $dia . " de Febrero del " . $ano;
+                                        break;
+                                    case 3:
+                                        $fecha_creacion = $dia . " de Marzo del " . $ano;
+                                        break;
+                                    case 4:
+                                        $fecha_creacion = $dia . " de Abril del " . $ano;
+                                        break;
+                                    case 5:
+                                        $fecha_creacion = $dia . " de Mayo del " . $ano;
+                                        break;
+                                    case 6:
+                                        $fecha_creacion = $dia . " de Junio del " . $ano;
+                                        break;
+                                    case 7:
+                                        $fecha_creacion = $dia . " de Julio del " . $ano;
+                                        break;
+                                    case 8:
+                                        $fecha_creacion = $dia . " de Agosto del " . $ano;
+                                        break;
+                                    case 9:
+                                        $fecha_creacion = $dia . " de Septiembre del " . $ano;
+                                        break;
+                                    case 10:
+                                        $fecha_creacion = $dia . " de Octubre del " . $ano;
+                                        break;
+                                    case 11:
+                                        $fecha_creacion = $dia . " de Noviembre del " . $ano;
+                                        break;
+                                    case 12:
+                                        $fecha_creacion = $dia . " de Diciembre del " . $ano;
+                                        break;
+                                }
+                                $titulo = $rs["titulo"];
+                                $descripcion = $rs["descripcion"];
+                                $publicante = $rs["Publicante"];
+                                $foto = $rs["fotoActividad"];
+                                $id = $rs["idActividad"];
+                            ?>
+                            <form id="actividadForm" method="POST">
+                                <input type="hidden" id="id_actividad" name="id_actividad" value="<?php echo $id;?>">
                                 <div class="col-lg-12">
                                     <article
                                         class="border-bottom thumb-info thumb-info-side-image thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
                                         <div class="row align-items-center pb-1">
                                             <div class="col-sm-4">
-                                                <a href="#" data-href="ajax/actividad.php" data-ajax-on-page="">
-                                                    <img src="img\blog\default\blog-47.jpg"
-                                                        class="img-fluid border-radius-0" alt="">
+                                                <a href="#" data-href="ajax/actividad.php?id_actividad="<?php echo $id ?>  data-ajax-on-page="">
+                                                    <img src="https://inmedia.pe/models/imagenes/imagenes_actividades/<?php echo $foto; ?>"
+                                                        class="img-fluid border-radius-0 obtenerActividad" alt="<?php echo $foto; ?>">
                                                 </a>
                                             </div>
                                             <div class="col-sm-8 pl-sm-0">
                                                 <div class="thumb-info-caption-text">
                                                     <div class="d-inline-block text-default text-1 float-none">
-                                                        <a class="text-decoration-none text-color-default">15 de
-                                                            Diciembre de 2019</a>
+                                                        <a class="text-decoration-none text-color-default">
+                                                            <?php echo $fecha_creacion; ?>
+                                                        </a>
                                                     </div>
                                                     <h4
                                                         class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
                                                         <a class="text-decoration-none text-color-dark">
-                                                            Calle Jr San German #654 Paradero 5
+                                                            <?php echo $titulo; ?>
                                                         </a>
                                                     </h4>
-                                                    <p class="text-2">Make
-                                                        Esta calle cuenta con una gran cantidad de basura
-                                                        en el cual estamos dando S/1111 soles a las personas
-                                                        que limpien e dejen como nuevo ese paradero para
-                                                        el bien de la vista publica e personas que viven
-                                                        cerca a ella...
+                                                    <p class="text-2">
+                                                        <?php echo $descripcion; ?>
                                                     </p>
+                                                    <p><b>Publicado por: </b> <i class="fas fa-building"></i>
+                                                    <?php echo $publicante; ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </article>
                                 </div>
+                            </form>
+                            <?php  }?>
                                 <div class="col-md-9">
                             <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
 
@@ -287,3 +348,22 @@ if (!isset($_SESSION['usuario'])) {
 
     <?php include_once("modals/modal_FormLogin.php"); ?>
     <?php include_once("layouts/footer.php"); ?>
+
+
+    <script>
+    $(document).on('click', '.obtenerActividad', function() {
+
+        var id_actividad = $("#id_actividad").val();
+            $.ajax({
+                url: "./ajax/actividad.php",
+                method: "POST",
+                data: {
+                    id_actividad: id_actividad
+                },
+                success: function(data) {
+                     var content = $("#porfolioAjaxBoxContent");
+                     content.innerHTML = data;
+                }
+            })
+    });
+    </script>

@@ -1,18 +1,30 @@
+<?php 
+    require_once("../Model/db_mysqli.php");
+    $id_actividad = $_POST["id_actividad"];
+
+    $sql = "SELECT *,
+                    a.titulo AS tituloActividad,
+                    e.EnombreComercial AS publicante, 
+                    a.descripcion AS Descripcion
+            FROM actividad a INNER JOIN empresa e ON  a.empresa = e.idEmpresa WHERE a.id = '" . $id_actividad . "'";
+    $result = mysqli_query($con, $sql);
+    while ($rs = mysqli_fetch_assoc($result)) {
+        $titulo = $rs["tituloActividad"];
+        $publicante = $rs["publicante"];
+        $descripcion = $rs["Descripcion"];
+?>
+
+
 <div class="post-content ml-0">
 
-    <h2 class="font-weight-bold"><a>Calle Jr San German #654 Paradero 5</a></h2>
+    <h2 class="font-weight-bold"><a><?php echo $titulo; ?></a></h2>
 
     <div class="post-meta">
-        <span><i class="far fa-user"></i> Publicado por <a href="#">Empresa 1</a> </span><br>
+        <span><i class="far fa-user"></i> Publicado por <a href="#"><?php echo $publicante; ?></a> </span><br>
         <span><i class="fas fa-calendar-alt"></i> <a href="#">Publicado el </a>, <a> 10/10/2019 10:30 pm</a> </span><br>
     </div>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lectus lacus, rutrum sit amet placerat et,
-        bibendum nec mauris. Duis molestie, purus eget placerat viverra, nisi odio gravida sapien, congue tincidunt nisl
-        ante nec tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris
-        ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante
-        ipsum primis
+    <p><?php echo $descripcion; ?>
         <a href="img\blog\default\blog-47.jpg">
             <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
                 <span class="thumb-info-wrapper">
@@ -75,3 +87,5 @@
 
 
 </div>
+
+    <?php } ?>

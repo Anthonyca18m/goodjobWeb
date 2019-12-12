@@ -1,13 +1,13 @@
 <?php 
     require_once("../Model/db_mysqli.php");
-    $id_actividad = $_POST["id_actividad"];
-
+    $id_actividad = intval($_GET["id_actividad"]);
     $sql = "SELECT *,
                     a.titulo AS tituloActividad,
                     e.EnombreComercial AS publicante, 
                     a.descripcion AS Descripcion
-            FROM actividad a INNER JOIN empresa e ON  a.empresa = e.idEmpresa WHERE a.id = '" . $id_actividad . "'";
+            FROM actividad a INNER JOIN empresa e ON  a.empresa = e.idEmpresa WHERE a.id = " . $id_actividad . "";
     $result = mysqli_query($con, $sql);
+
     while ($rs = mysqli_fetch_assoc($result)) {
         $titulo = $rs["tituloActividad"];
         $publicante = $rs["publicante"];
@@ -84,8 +84,7 @@
     </div>
 
     <a href="#" class="btn btn-success btn-sm">Postular actividad</a>
-
+    <?php } ?>
 
 </div>
 
-    <?php } ?>

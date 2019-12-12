@@ -214,7 +214,7 @@ if (!isset($_SESSION['usuario'])) {
                                         <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
                                             <?php
                                             include_once("Model/db_mysqli.php");
-                                            $sql = "SELECT * FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa WHERE a.estado=2";
+                                            $sql = "SELECT * FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa WHERE a.estado = 0";
                                             $result = mysqli_query($con, $sql);
 
                                             while ($rs = mysqli_fetch_array($result)) {

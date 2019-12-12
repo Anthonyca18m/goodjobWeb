@@ -137,6 +137,26 @@ if (!isset($_SESSION['usuario'])) {
                                                 <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
                                                         href="profile" <?php echo $mostrar; ?>>
                                                         Mi Perfil </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="mypostulations">
+                                                                <i class="icon-grid icons"> </i>
+                                                                Mis Postulaciones
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="myparticiones">
+                                                                <i class="icon-book-open icons"> </i>
+                                                                Mis Participaciones
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="Model/logout.php">
+                                                                <i class="icon-power icons"> </i>
+                                                                Cerrar Sesión
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                                 
                                             </ul>
@@ -283,7 +303,7 @@ if (!isset($_SESSION['usuario'])) {
                                         class="border-bottom thumb-info thumb-info-side-image thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
                                         <div class="row align-items-center pb-1">
                                             <div class="col-sm-4">
-                                                <a href="#" data-href="ajax/actividad.php?id_actividad="<?php echo $id ?>  data-ajax-on-page="">
+                                                <a href="#" data-href="ajax/actividad.php?id_actividad="<?php echo $id; ?>  data-ajax-on-page="">
                                                     <img src="https://inmedia.pe/models/imagenes/imagenes_actividades/<?php echo $foto; ?>"
                                                         class="img-fluid border-radius-0 obtenerActividad" alt="<?php echo $foto; ?>">
                                                 </a>
@@ -314,17 +334,17 @@ if (!isset($_SESSION['usuario'])) {
                             </form>
                             <?php  }?>
                                 <div class="col-md-9">
-                            <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+                                    <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
 
-                                <div class="bounce-loader">
-                                    <div class="bounce1"></div>
-                                    <div class="bounce2"></div>
-                                    <div class="bounce3"></div>
+                                    <div class="bounce-loader">
+                                        <div class="bounce1"></div>
+                                        <div class="bounce2"></div>
+                                        <div class="bounce3"></div>
+                                    </div>
+
+                                    <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
                                 </div>
-
-                                <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
-
-                            </div>
                         </div>
                             </div>
 
@@ -351,19 +371,20 @@ if (!isset($_SESSION['usuario'])) {
 
 
     <script>
-    $(document).on('click', '.obtenerActividad', function() {
+    // $(document).on('click', '.obtenerActividad', function() {
 
-        var id_actividad = $("#id_actividad").val();
-            $.ajax({
-                url: "./ajax/actividad.php",
-                method: "POST",
-                data: {
-                    id_actividad: id_actividad
-                },
-                success: function(data) {
-                     var content = $("#porfolioAjaxBoxContent");
-                     content.innerHTML = data;
-                }
-            })
-    });
+    //     var id_actividad = $("#id_actividad").val();
+    //         $.ajax({
+    //             url: "./ajax/actividad.php",
+    //             method: "GET",
+    //             data: {
+    //                 id_actividad: id_actividad
+    //             },
+    //             success: function(data) {
+    //                 //  var content = $("#porfolioAjaxBoxContent");
+    //                 //  content.Text = data;
+    //                 alert(data);
+    //             }
+    //         })
+    // });
     </script>

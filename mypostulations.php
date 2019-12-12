@@ -1,3 +1,16 @@
+<?php
+    require_once("Model/db_mysqli.php");
+$hidden = "";
+$mostrar= "";
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    $hidden =  "";
+    $mostrar= "style='display:none;'";
+} else {
+    $hidden =  "style='display:none;'";
+    $mostrar = "";
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -116,10 +129,32 @@
                                                         FanPage </a>
 
                                                 </li>
-                                                <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
-                                                        href="registrarse">
+                                                <li class="dropdown" <?php echo $hidden;?>> <a class="dropdown-item dropdown-toggle active" href="registrarse">
                                                         Registrarse </a>
-
+                                                </li>
+                                                <li class="dropdown"> <a class="dropdown-item dropdown-toggle"
+                                                        href="profile" <?php echo $mostrar; ?>>
+                                                        Mi Perfil </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="mypostulations">
+                                                                <i class="icon-grid icons"> </i>
+                                                                Mis Postulaciones
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="myparticiones">
+                                                                <i class="icon-book-open icons"> </i>
+                                                                Mis Participaciones
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="Model/logout.php">
+                                                                <i class="icon-power icons"> </i>
+                                                                Cerrar Sesión
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </nav>
@@ -132,7 +167,7 @@
                                 <div class="header-nav-features 
 								header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
                                     <div class="header-nav-feature header-nav-features-search d-inline-flex">
-                                        <a href="#" data-toggle="modal" data-target="#FormLogin"
+                                        <a href="#" <?php echo $hidden;?> data-toggle="modal" data-target="#FormLogin"
                                             class="header-nav-features-toggle">
                                             <i class="fas fa-user header-nav-top-icon"></i>
                                         </a>

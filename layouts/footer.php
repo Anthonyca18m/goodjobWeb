@@ -29,6 +29,7 @@
             </footer>
         </div>
     <!-- Vendor -->
+
     <script src="vendor\jquery\jquery.min.js"></script>
     <script src="vendor\jquery.appear\jquery.appear.min.js"></script>
     <script src="vendor\jquery.easing\jquery.easing.min.js"></script>

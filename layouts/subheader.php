@@ -42,3 +42,10 @@
 
     <!-- Head Libs -->
     <script src="vendor\modernizr\modernizr.min.js"></script>
+    
+    <script src="js/jquery-3.3.1.min.js"></script> 
+    <link rel="stylesheet" href="js/toastr.min.css"> 
+    <script src="js/popper.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/body_toast.js"></script>  
+

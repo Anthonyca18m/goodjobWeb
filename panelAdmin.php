@@ -189,100 +189,650 @@ if (!isset($_SESSION['usuario'])) {
                         </section>
 
                         <div class="container py-2">
-
                             <div class="row">
-                                <div class="col pb-5">
+                                <div class="col-lg-12">
+                                    <div class="tabs tabs-center">
+                                        <ul class="nav nav-tabs justify-content-center">
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#popular15" data-toggle="tab">ACTIVIDADES EN ESPERA</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#recent15" data-toggle="tab">ACTIVIDADES ACEPTADAS</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#recent16" data-toggle="tab">ACTIVIDADES RECHAZADAS</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#recent17" data-toggle="tab">EMPRESAS EN ESPERA</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#recent18" data-toggle="tab">EMPRESAS ACEPTADAS</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#recent19" data-toggle="tab">EMPRESAS RECHAZADAS</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="popular15" class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col pb-5">
 
-                                    <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
 
-                                        <div class="bounce-loader">
-                                            <div class="bounce1"></div>
-                                            <div class="bounce2"></div>
-                                            <div class="bounce3"></div>
-                                        </div>
-
-                                        <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
-
-                                    </div>
-
-                                    <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
-                                        <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
-                                    </ul>
-
-                                    <div class="blog-posts recent-posts">
-
-                                        <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
-                                            <?php
-                                            include_once("Model/db_mysqli.php");
-                                            $sql = "SELECT *, DAY(a.fecha_creacion) as diafc,
-                                                            MONTHNAME(a.fecha_creacion) as mesfc
-                                                     FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa WHERE a.estado = 0";
-                                            $result = mysqli_query($con, $sql);
-
-                                            while ($rs = mysqli_fetch_array($result)) {
-
-                                            ?>
-                                                <form id="actividadForm" method="POST">
-                                                    <input type="hidden" id="idActividad" name="idActividad" value="<?php echo $rs["id"] ?>">
-                                                    <div class="masonry-item no-default-style col-md-6">
-                                                        <article class="post post-medium border-0 pb-0 mb-5">
-                                                            <div class="post-image">
-                                                                <a>
-                                                                    <img src="img\blog\medium\blog-46.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0 w-100" alt="">
-                                                                    <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
-                                                                        <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
-                                                                            <?php
-                                                                            echo $rs["diafc"];
-                                                                            ?>
-                                                                        </span>
-                                                                        <span class="month text-1 bg-color-light line-height-9 text-default w-100 top-2 d-block py-0">
-                                                                            <span class="text-1">
-                                                                                <?php
-                                                                                echo $rs["mesfc"];
-                                                                                ?>
-                                                                            </span>
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
                                                             </div>
 
-                                                            <div class="post-content bg-color-light p-4">
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
 
-                                                                <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
-                                                                    <?php echo $rs["titulo"]; ?>
-                                                                </h2>
-                                                                <p>
-                                                                    <?php echo $rs["descripcion"]; ?>
-                                                                </p>
+                                                        </div>
 
-                                                                <div class="post-meta m-0 p-0">
-                                                                    <span><i class="far fa-user"></i> Publicado por <a href="#"><?php echo $rs["EnombreComercial"]; ?></a>
-                                                                    </span>
-                                                                    <span></span>
-                                                                    <span><i class="fas fa-users"></i> <a href="#">
-                                                                            <?php echo $rs["participantes_requeridos"] . " personas requeridas"; ?>
-                                                                        </a></span>
-                                                                    <span class="d-block mt-2">
-                                                                        <a id="btnAceptar" class="btn btn-xs btn-success text-1 text-uppercase text-light">
-                                                                            ACEPTAR
-                                                                        </a>
-                                                                        <a id="btnRechazar" data-toggle="modal" data-target="#rechazarActividad" class="btn btn-xs btn-danger text-1 text-uppercase text-light">
-                                                                            RECHAZAR
-                                                                        </a></span>
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
 
-                                                                </div>
+                                                        <div class="blog-posts recent-posts">
 
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DAY(a.fecha_creacion) as diafc,
+                                                            MONTHNAME(a.fecha_creacion) as mesfc,
+                                                            distrito.DNombre as NombreDistrito
+                                                     FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa
+                                                        INNER JOIN distrito ON a.distrito = distrito.idDistrito WHERE a.estado = 0";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idActividad" name="idActividad" value="<?php echo $rs["id"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <img src="<?php echo $rs["foto"]; ?>" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0 w-100" alt="">
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["diafc"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                            <span class="month text-1 bg-color-light line-height-9 text-default w-100 top-2 d-block py-0">
+                                                                                                <span class="text-1">
+                                                                                                    <?php
+                                                                                                    echo $rs["mesfc"];
+                                                                                                    ?>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        <?php echo $rs["titulo"]; ?>
+                                                                                    </h2>
+                                                                                    <p>
+                                                                                        <?php echo $rs["descripcion"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_requeridos"] . " personas requeridas"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_actuales"] . " personas Participando"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-money-bill-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo "S/ " . $rs["recompensa"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-map-marker-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["NombreDistrito"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+
+                                                                                    <div class="post-meta m-0 p-0">
+                                                                                        <span>
+                                                                                            <i class="far fa-user"></i> Publicado por
+                                                                                            <a href="#"><?php echo $rs["EnombreComercial"]; ?></a>
+                                                                                        </span>
+                                                                                        <span></span>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
                                                             </div>
-                                                        </article>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
                                                     </div>
-                                                </form>
-                                            <?php } ?>
-                                        </div>
-                                        <div id="alerts"></div>
-                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="recent15" class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col pb-5">
 
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
+                                                            </div>
+
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+                                                        </div>
+
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
+
+                                                        <div class="blog-posts recent-posts">
+
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DAY(a.fecha_creacion) as diafc,
+                                                            MONTHNAME(a.fecha_creacion) as mesfc,
+                                                            distrito.DNombre as NombreDistrito
+                                                     FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa
+                                                        INNER JOIN distrito ON a.distrito = distrito.idDistrito WHERE a.estado = 1";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idActividad" name="idActividad" value="<?php echo $rs["id"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <img src="<?php echo $rs["foto"]; ?>" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0 w-100" alt="">
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["diafc"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                            <span class="month text-1 bg-color-light line-height-9 text-default w-100 top-2 d-block py-0">
+                                                                                                <span class="text-1">
+                                                                                                    <?php
+                                                                                                    echo $rs["mesfc"];
+                                                                                                    ?>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        <?php echo $rs["titulo"]; ?>
+                                                                                    </h2>
+                                                                                    <p>
+                                                                                        <?php echo $rs["descripcion"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_requeridos"] . " personas requeridas"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_actuales"] . " personas Participando"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-money-bill-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo "S/ " . $rs["recompensa"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-map-marker-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["NombreDistrito"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+
+                                                                                    <div class="post-meta m-0 p-0">
+                                                                                        <span>
+                                                                                            <i class="far fa-user"></i> Publicado por
+                                                                                            <a href="#"><?php echo $rs["EnombreComercial"]; ?></a>
+                                                                                        </span>
+                                                                                        <span></span>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="recent16" class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col pb-5">
+
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
+                                                            </div>
+
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+                                                        </div>
+
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
+
+                                                        <div class="blog-posts recent-posts">
+
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DAY(a.fecha_creacion) as diafc,
+                                                            MONTHNAME(a.fecha_creacion) as mesfc,
+                                                            distrito.DNombre as NombreDistrito
+                                                     FROM actividad a INNER JOIN empresa e ON a.empresa = e.idEmpresa
+                                                        INNER JOIN distrito ON a.distrito = distrito.idDistrito WHERE a.estado = 2";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idActividad" name="idActividad" value="<?php echo $rs["id"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <img src="<?php echo $rs["foto"]; ?>" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0 w-100" alt="">
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["diafc"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                            <span class="month text-1 bg-color-light line-height-9 text-default w-100 top-2 d-block py-0">
+                                                                                                <span class="text-1">
+                                                                                                    <?php
+                                                                                                    echo $rs["mesfc"];
+                                                                                                    ?>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        <?php echo $rs["titulo"]; ?>
+                                                                                    </h2>
+                                                                                    <p>
+                                                                                        <?php echo $rs["descripcion"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_requeridos"] . " personas requeridas"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-users"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["participantes_actuales"] . " personas Participando"; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-money-bill-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo "S/ " . $rs["recompensa"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        <i class="fas fa-map-marker-alt"></i>
+                                                                                        <a href="#">
+                                                                                            <?php echo $rs["NombreDistrito"]; ?>
+                                                                                        </a>
+                                                                                    </span>
+
+                                                                                    <div class="post-meta m-0 p-0">
+                                                                                        <span>
+                                                                                            <i class="far fa-user"></i> Publicado por
+                                                                                            <a href="#"><?php echo $rs["EnombreComercial"]; ?></a>
+                                                                                        </span>
+                                                                                        <span></span>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="recent17" class="tab-pane active">
+                                                <!-- ACTIVIDADES EN ESPERA -->
+                                                <div class="row">
+                                                    <div class="col pb-5">
+
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
+                                                            </div>
+
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+                                                        </div>
+
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
+
+                                                        <div class="blog-posts recent-posts">
+
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DATE_FORMAT(EfechaRegistro, '%d %M %Y') as EfechaRegistro FROM empresa WHERE estado = 0";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $rs["idEmpresa"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["EfechaRegistro"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        Razón Social: <?php echo $rs["ErazonSocial"]; ?>
+                                                                                    </h2>
+                                                                                    <h4>Información: </h4>
+                                                                                    <p>
+                                                                                        Nombre Comercial: <?php echo $rs["EnombreComercial"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+
+                                                                                        Ruc: <?php echo $rs["Eruc"]; ?>
+
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Celular: <?php echo $rs["Ececular"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Dirección Legal: <?php echo $rs["Edireccion"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Correo Electronico: <?php echo $rs["ecorreo"]; ?>
+                                                                                    </span>
+
+                                                                                    <div class="post-meta m-0 p-0">
+                                                                                        <a id="aceptarEmpresa" class="btn btn-success text-light">Aceptar Empresa </a>
+                                                                                        <a id="rechazarEmpresa" class="btn btn-danger text-light">Rechazar Empresa </a>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="recent18" class="tab-pane active">
+                                            <div class="row">
+                                                    <div class="col pb-5">
+
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
+                                                            </div>
+
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+                                                        </div>
+
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
+
+                                                        <div class="blog-posts recent-posts">
+
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DATE_FORMAT(EfechaRegistro, '%d %M %Y') as EfechaRegistro FROM empresa WHERE estado = 1";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $rs["idEmpresa"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["EfechaRegistro"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        Razón Social: <?php echo $rs["ErazonSocial"]; ?>
+                                                                                    </h2>
+                                                                                    <h4>Información: </h4>
+                                                                                    <p>
+                                                                                        Nombre Comercial: <?php echo $rs["EnombreComercial"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+
+                                                                                        Ruc: <?php echo $rs["Eruc"]; ?>
+
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+
+                                                                                        N° Actividades publicadas: <?php echo $rs["EnumeroActividades"]; ?>
+
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Celular: <?php echo $rs["Ececular"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Dirección Legal: <?php echo $rs["Edireccion"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Correo Electronico: <?php echo $rs["ecorreo"]; ?>
+                                                                                    </span>
+
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="recent19" class="tab-pane active">
+                                            <div class="row">
+                                                    <div class="col pb-5">
+
+                                                        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+                                                            <div class="bounce-loader">
+                                                                <div class="bounce1"></div>
+                                                                <div class="bounce2"></div>
+                                                                <div class="bounce3"></div>
+                                                            </div>
+
+                                                            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+                                                        </div>
+
+                                                        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                                                            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#"></a></li>
+                                                        </ul>
+
+                                                        <div class="blog-posts recent-posts">
+
+                                                            <div id="portfolioLoadMoreWrapper" class="row masonry" data-plugin-masonry="" data-plugin-options="{'itemSelector': '.masonry-item'}" data-total-pages="3" data-ajax-url="ajax/index-blog-4-ajax-load-more-">
+                                                                <?php
+                                                                include_once("Model/db_mysqli.php");
+                                                                $sql = "SELECT *, DATE_FORMAT(EfechaRegistro, '%d %M %Y') as EfechaRegistro FROM empresa WHERE estado = 2";
+                                                                $result = mysqli_query($con, $sql);
+
+                                                                while ($rs = mysqli_fetch_array($result)) {
+
+                                                                ?>
+                                                                    <form id="actividadForm" method="POST">
+                                                                        <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $rs["idEmpresa"] ?>">
+                                                                        <div class="masonry-item no-default-style col-md-12">
+                                                                            <article class="post post-medium border-0 pb-0 mb-5">
+                                                                                <div class="post-image">
+                                                                                    <a>
+                                                                                        <div class="date p-absolute z-index-2 top-10 right-10 mr-0 mr-3 pl-1 pt-1">
+                                                                                            <span class="day bg-color-light font-weight-extra-bold py-2 text-color-dark">
+                                                                                                <?php
+                                                                                                echo $rs["EfechaRegistro"];
+                                                                                                ?>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="post-content bg-color-light p-4">
+
+                                                                                    <h2 class="font-weight-bold text-5 line-height-6 mt-0 mb-2">
+                                                                                        Razón Social: <?php echo $rs["ErazonSocial"]; ?>
+                                                                                    </h2>
+                                                                                    <h4>Información: </h4>
+                                                                                    <p>
+                                                                                        Nombre Comercial: <?php echo $rs["EnombreComercial"]; ?>
+                                                                                    </p>
+                                                                                    <span>
+
+                                                                                        Ruc: <?php echo $rs["Eruc"]; ?>
+
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Celular: <?php echo $rs["Ececular"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Dirección Legal: <?php echo $rs["Edireccion"]; ?>
+                                                                                    </span>
+                                                                                    <br>
+                                                                                    <span>
+                                                                                        Correo Electronico: <?php echo $rs["ecorreo"]; ?>
+                                                                                    </span>
+
+
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </form>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div id="alerts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
 
                         </div>
 
@@ -298,9 +848,9 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div class="modal-body">
                             <form id="FormMnsActividad" method="POST">
-                            <input type="hidden" id="idActividadmns">
-                            <label>Ingresa motivo de rechazo de actividad: </label>
-                            <input type="text" id="mnsRechazo" name="mnsRechazo" class="form-control">
+                                <input type="hidden" id="idActividadmns">
+                                <label>Ingresa motivo de rechazo de actividad: </label>
+                                <input type="text" id="mnsRechazo" name="mnsRechazo" class="form-control">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" id="btnRechazarModal" data-dismiss="modal">Enviar</button>
@@ -358,4 +908,39 @@ if (!isset($_SESSION['usuario'])) {
                         }
                     });
                 });
+
+                $("#aceptarEmpresa").on("click", function() {
+                    var idEmpresa = $("#idEmpresa").val();
+                    var action = "aceptarEmpresa";
+                    $.ajax({
+                        url: 'Model/empresa.php',
+                        data: {
+                            idEmpresa: idEmpresa,
+                            action: action
+                        },
+                        type: 'post',
+                        beforeSend: function() {},
+                        success: function(data) {
+                            $("#alerts").html(data);
+                        }
+                    });
+                });
+                $("#rechazarEmpresa").on("click", function() {
+                    var idEmpresa = $("#idEmpresa").val();
+                    var action = "rechazarEmpresa";
+                    $.ajax({
+                        url: 'Model/empresa.php',
+                        data: {
+                            idEmpresa: idEmpresa,
+                            action: action
+                        },
+                        type: 'post',
+                        beforeSend: function() {},
+                        success: function(data) {
+                            $("#alerts").html(data);
+                        }
+                    });
+                });
+
             </script>
+

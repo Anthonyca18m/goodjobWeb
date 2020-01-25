@@ -22,8 +22,8 @@ if ($_POST["action"] == "aceptarActividad") {
         ';
     }
 }elseif ($_POST["action"] == "rechazarActividad") {
-
-    $sql = "UPDATE actividad SET actividad.estado = 2, actividad.mensaje = '".$rs["mns"]."' WHERE actividad.id = " . intval($_POST["codigo"]);
+    $mns = $_POST["mns"];
+    $sql = "UPDATE actividad SET actividad.estado = 2, actividad.mensaje = '$mns' WHERE actividad.id = " . intval($_POST["codigo"]);
     $result = mysqli_query($con, $sql);
 
     if ($result) {

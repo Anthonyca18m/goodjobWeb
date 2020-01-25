@@ -83,7 +83,7 @@ if ($accion == "registrarPersona") {
         EcodigoPostal, estado, EnombreComercial, EnumeroActividades, 
         idDistrito, ecorreo, password) VALUES 
         (NULL,'" . $re_razonSocial . "','" . $re_ruc . "','" . $re_numeroContacto . "','-',curdate(),'-',
-            1,'" . $re_nombreComercial . "',0,1,'" . $re_email . "',sha1('" . $re_password . "'))
+            0,'" . $re_nombreComercial . "',0,1,'" . $re_email . "',sha1('" . $re_password . "'))
         ";
 
         $result = mysqli_query($con, $consulta_string);
